@@ -7,11 +7,11 @@
   --dl-space-space-unit: 16px;
   --dl-size-size-xxlarge: 288px;
   --dl-size-size-maxwidth: 1400px;
-  --dl-color-theme-accent1: #FFFFFF;
-  --dl-color-theme-accent2: #F5D1B0;
+  --dl-color-theme-accent1: #C9B9A2;
+  --dl-color-theme-accent2: #B7A976;
   --dl-radius-radius-round: 50%;
-  --dl-color-theme-primary1: #BF4408;
-  --dl-color-theme-primary2: #E65103;
+  --dl-color-theme-primary1: #658352;
+  --dl-color-theme-primary2: #94A687;
   --dl-space-space-halfunit: 8px;
   --dl-space-space-sixunits: 96px;
   --dl-space-space-twounits: 32px;
@@ -20,12 +20,12 @@
   --dl-radius-radius-radius8: 8px;
   --dl-space-space-fiveunits: 80px;
   --dl-space-space-fourunits: 64px;
-  --dl-color-theme-secondary1: #FFFFFF;
-  --dl-color-theme-secondary2: #FBF1EB;
+  --dl-color-theme-secondary1: #E9E7DE;
+  --dl-color-theme-secondary2: #F5F4ED;
   --dl-space-space-threeunits: 48px;
-  --dl-color-theme-neutral-dark: #191818;
+  --dl-color-theme-neutral-dark: #1E2203;
   --dl-radius-radius-cardradius: 8px;
-  --dl-color-theme-neutral-light: #FBFAF9;
+  --dl-color-theme-neutral-light: #FBF9EF;
   --dl-radius-radius-imageradius: 8px;
   --dl-radius-radius-inputradius: 24px;
   --dl-radius-radius-buttonradius: 24px;
@@ -166,30 +166,30 @@
 }
 .thq-heading-1 {
   font-size: 48px;
-  font-family: STIX Two Text;
+  font-family: Cabin;
   font-weight: 700;
   line-height: 1.5;
 }
 .thq-heading-2 {
   font-size: 35px;
-  font-family: STIX Two Text;
+  font-family: Cabin;
   font-weight: 600;
   line-height: 1.5;
 }
 .thq-heading-3 {
   font-size: 26px;
-  font-family: STIX Two Text;
+  font-family: Cabin;
   font-weight: 600;
   line-height: 1.5;
 }
 .thq-body-large {
   font-size: 18px;
-  font-family: Noto Sans;
+  font-family: Cabin;
   line-height: 1.5;
 }
 .thq-body-small {
   font-size: 16px;
-  font-family: Noto Sans;
+  font-family: Cabin;
   line-height: 1.5;
 }
 .thq-team-image-round {

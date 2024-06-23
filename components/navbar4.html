@@ -34,12 +34,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&amp;display=swap"
       data-tag="font"
     />
     <link
@@ -50,16 +45,6 @@
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
-      data-tag="font"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&amp;display=swap"
       data-tag="font"
     />
     <link
@@ -75,14 +60,24 @@
         <header data-thq="thq-navbar" class="navbar4-navbar-interactive">
           <img
             alt="Animal Shelter Database"
-            src="https://lh3.googleusercontent.com/pw/AP1GczOSrcz61Qwvl_CPindKK2LFkIiCKtenBH7fJOvCOBvrZ8X7X5Sj3r0O-JJbkyX9pH8GbbvdLwVexGQ1CaZrEzKaXreyBmBoarSyb4xG7yuNUDBgfIc27sOFONyz6fuVIkT5Z5leazGP0Aiq3oqueTr6ITcixJVb1xZVtvEWHF0qDP5-yoLCzroN8aBoYQ5DBjjx4L4gWF2DgbRXanF1bwh2bcKB8zUrEd-Dcs3ydRqIhubJlUFtaBLWc_Tu8I0gLvX94wHISek8qJzI9J8OXSHBGRSJr-OhjDa4iewZkRFwCXs_qNwnecHMptt5J921bMQPek8e5NNzJP_ub-ZiOUBXIIGIYIwyUiyRKQtwoMPqeCOJx1WYqqugNT53BRtTAe7xNpbo0tC1E36M8xDg9_YhgTNVkp-H7YOHlZnwJrxBPS29U1PvutGLwXr-_2axQrV3pOV7vc43fmV6rkAUHl7ZieGnQKNXYeD-ogyyR1FmK7ughkyI18pGFXN4zXd4gzLHcnigMlHRzSXlr9EBxtwkZVYD9sYUFnFZo3Y8jVqTkVEd9pPg2Ma9z1RG55QOHpDRjeNJtDpfzaq0wJZuGEblpp0n8eGm5G7nUZYOk5kKgMMl-zIwQWq5xXpJQL3GlKNMWgGcen6Eyckqn1yzDiqsgHoJ8LfiRumAekiTZDHqtjou9Yi-IkmsLODWXGE27FkfansmN8n5GKa1aBMES4XZxmDKc-AbYmf40b02oH9ru3mTibcjGWmCS0dcq-eAACY7u1Bn5zHKqSHq948aQCdQ6MycbzZXdD3ojsikMYtfyyDANP37c4wlU2mVDbZAacBLa3CRMA8ZZn3WQZReHgMrr4lqh0wh11FXJ-dC-hTl3aO3aai3nVOFYC3m_FsByWBSs5m-9LGpe5i0dpmNSB8NOZ0=w477-h464-s-no-gm?authuser=0"
+            src="public/external/pawprint-1500h.gif"
             loading="lazy"
             class="navbar4-image1"
           />
           <div data-thq="thq-navbar-nav" class="navbar4-desktop-menu">
             <nav class="navbar4-links">
-              <span class="thq-body-small thq-link"><span>Home</span></span>
-              <span class="thq-body-small thq-link"><span>Search</span></span>
+              <a
+                href="index.html"
+                class="navbar4-link1 thq-body-small thq-link"
+              >
+                <span>Home</span>
+              </a>
+              <a
+                href="search.html"
+                class="navbar4-link2 thq-body-small thq-link"
+              >
+                <span>Search</span>
+              </a>
               <a
                 href="donate.html"
                 class="navbar4-link3 thq-body-small thq-link"
@@ -94,15 +89,19 @@
               </span>
             </nav>
             <div class="navbar4-buttons">
-              <button
+              <a
+                href="login.html"
                 class="navbar4-action1 thq-button-animated thq-button-filled"
               >
-                <span class="navbar4-text thq-body-small">Action 1</span>
-              </button>
+                <h1 class="navbar4-text thq-body-small">Login</h1>
+              </a>
               <button
                 class="navbar4-action2 thq-button-animated thq-button-outline"
               >
-                <span class="thq-body-small">Action 2</span>
+                <a href="sign-up.html" class="navbar4-navlink thq-body-small">
+                  <span>Sign Up</span>
+                  <br />
+                </a>
               </button>
             </div>
           </div>

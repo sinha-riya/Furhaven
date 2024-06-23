@@ -14,7 +14,7 @@
   padding-left: var(--dl-space-space-threeunits);
   padding-right: var(--dl-space-space-threeunits);
   padding-bottom: var(--dl-space-space-twounits);
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 .navbar4-image1 {
   height: 3rem;
@@ -33,6 +33,12 @@
   flex-direction: row;
   justify-content: flex-start;
 }
+.navbar4-link1 {
+  text-decoration: none;
+}
+.navbar4-link2 {
+  text-decoration: none;
+}
 .navbar4-link3 {
   transition: 0.3s;
   text-decoration: none;
@@ -48,6 +54,7 @@
 .navbar4-action1 {
   display: flex;
   flex-direction: row;
+  text-decoration: none;
 }
 .navbar4-text {
   transition: 0.3s;
@@ -56,6 +63,9 @@
 .navbar4-action2 {
   display: flex;
   flex-direction: row;
+}
+.navbar4-navlink {
+  text-decoration: none;
 }
 .navbar4-burger-menu {
   display: none;

@@ -51,7 +51,13 @@
 .hero91-text2 {
   text-align: center;
 }
-
+.hero91-root-class-name {
+  fill: var(--dl-color-theme-neutral-dark);
+  flex: 1;
+  color: #000000;
+  background-size: cover;
+  background-image: url("https://play.teleporthq.io/static/svg/default-img.svg");
+}
 @media(max-width: 991px) {
   .hero91-text {
     text-align: center;
