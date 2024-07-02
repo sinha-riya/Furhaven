@@ -361,15 +361,6 @@
   flex-direction: column;
   justify-content: center;
 }
-.login-navlink {
-  top: 12px;
-  left: 22px;
-  position: absolute;
-  font-size: 25px;
-  align-self: flex-start;
-  text-align: left;
-  text-decoration: none;
-}
 .login-footer4 {
   gap: 80px;
   width: 100%;
