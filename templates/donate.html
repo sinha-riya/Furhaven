@@ -52,6 +52,50 @@
       rel="stylesheet"
       href="https://unpkg.com/@teleporthq/teleport-custom-scripts/dist/style.css"
     />
+    <script>
+      // Razorpay offers "test-cards" to make payments, use them (account-number)
+      // along with random CVV and expiry ID for testing purposes. Use razorpay in 
+      // test-mode only (not LIVE mode)
+        async function donate() {
+          const key_data = await fetch("/api/key", { method: "GET" });
+          const order_data = await fetch("/order", {
+            // Making default donation of 500
+            method: "POST",
+            body: {
+              amount: 500,
+            }
+          });
+          const key = key_data.json().key;
+          const order = order_data.json().order;
+
+          var options = {
+            key,
+            amount: order.amount,
+            currency: "INR",
+            name: "Pethaven",
+            description: "Donation Box",
+            order_id: order.id,
+            callback_url: "/paymentVerify",
+            // Change this later
+            prefill: {
+              "name": "Gaurav Kapoor",
+              "email": "gaurav.kapoor@example.com",
+              "contact": "9000090000"
+            },
+            notes: {
+              // Change this later
+              "address": "Razorpay",
+            },
+            // Change this later
+            theme: {
+              "color": "#3399cc",
+            }
+          }
+          const razor = new windoe.Razorpay(options);
+          razor.open();
+        }
+
+    </script>
   </head>
   <body>
     <link rel="stylesheet" href="../static/css/style.css" />
@@ -173,7 +217,7 @@
                 </span>
               </p>
               <div class="hero91-actions">
-                <button class="thq-button-outline hero91-button">
+                <button class="thq-button-outline hero91-button" onclick="donate()">
                   <span class="hero91-text2 thq-body-small">
                     <span>Donate</span>
                   </span>
@@ -522,4 +566,5 @@
       src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
     ></script>
   </body>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </html>

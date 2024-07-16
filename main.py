@@ -1,13 +1,23 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect
 from pymongo import MongoClient, errors
+from razorpay import Client
+from dotenv import load_dotenv
+import os
+import uuid
+
+load_dotenv()
 
 app = Flask(__name__)
 
 # Connect to MongoDB
 client = MongoClient('mongodb://localhost:27017/')
 db = client.Furhaven1
-user = db.users
+user = db.users 
 vol = db.volunteers
+
+# Razorpay config
+razorpay_client = Client(os.getenv("RAZORPAY_API_KEY"), os.getenv("RAZORPAY_API_SECRET"))
+razorpay_client.set_app_details({"title" : "<YOUR_APP_TITLE>", "version" : "<YOUR_APP_VERSION>"})
 
 '''
 user.create_index([('email',1)], unique= True)
@@ -113,6 +123,47 @@ def register():
         return jsonify({'message': 'The email id is alredy registered.'})
     except Exception as e:
         return jsonify({'message': 'An unexpected error occurred: ' + str(e)}), 500
+
+# Route to initiate payment
+@app.route("/order", methods=["POST"])
+async def checkout():
+    try:
+        amount = request.json['amount'] * 100
+        currency = "INR"
+        receipt_id = "order_id" + str(uuid.uuid4());
+        order_data = razorpay_client.order.create({
+            amount: amount,
+            currency: currency,
+            receipt_id: receipt_id
+        })
+
+        return jsonify(order_data), 200
+
+    except Exception as e:
+        return jsonify({
+            'message': "500: InternalServerError"
+        }), 500
+
+# Route to send public_key (needed for order)
+@app.route("/api/key", methods=["GET"])
+def sendKey():
+    return jsonify(dict(
+        # Do not export API-secret (key needs to be shared)
+        key=os.getenv("RAZORPAY_API_KEY")))
+
+# Route to verify payment
+@app.route("/paymentVerify", methods=["POST"])
+def verify_payment():
+    payment_id = request.json['razorpay_payment_id']
+    order_id = request.json['razorpay_order_id']
+    signature = request.json['razorpay_signature']
+
+    status = razorpay_client.utility.verify_payment_signature(payment_id, order_id, signature, os.getenv("RAZORPAY_API_SECRET"))
+
+    if status:
+        return redirect("success.html")
+    else:
+        return redirect("failed.html")
 
 if __name__ == '__main__':
     app.run(debug=True)
