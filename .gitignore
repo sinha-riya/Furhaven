@@ -1,1 +1,5 @@
-try.py
+test.py
+
+node_modules/
+__pycache__/
+venv/

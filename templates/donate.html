@@ -57,33 +57,29 @@
       // along with random CVV and expiry ID for testing purposes. Use razorpay in 
       // test-mode only (not LIVE mode)
         function donate(e) {
-          fetch("/api/key", { method: "GET" })
-            .then(response => response.json())
-            .then(data => ({ key: data.key })) // Extract key from response
-            .then(keyData => fetch("/order", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ amount: 500 }), // Stringify data for POST
-            }))
-            .then(response => response.json())
-            .then(orderData => ({ order: orderData.order })) // Combine key and order data
-            .then(combinedData => {
+          // Better way is to hit the /api/key endpoint and fetch the key
+            key="rzp_test_B3vA5ykqH9puVB"
+              fetch("/order", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type":"application/json"
+                  },
+                  body: JSON.stringify({ amount: 500 })
+              })
+              .then(response => response.json())
+              .then(combinedData => {
+                console.log(combinedData);
               const options = {
-                key: combinedData.key,
-                amount: Number(combinedData.order.amount),
+                key,
+                amount: Number(combinedData.amount),
                 currency: "INR",
                 name: "Pethaven",
                 description: "Donation Box",
-                order_id: combinedData.order.id,
-                callback_url: "http://localhost:5000/api/paymentVerify",
-                // ... other options (prefill, notes, theme)
+                order_id: combinedData.id,
+                callback_url: "http://localhost:5000/paymentVerify",
               };
-              console.log("Hi mom");
               const razor = new Razorpay(options);
               razor.open();
-              e.preventDefault();
             })
             .catch(error => {
               console.error("Error occurred during donation process:", error);

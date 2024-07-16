@@ -3,7 +3,8 @@ from pymongo import MongoClient, errors
 from razorpay import Client
 from dotenv import load_dotenv
 import os
-import uuid
+import hmac
+import hashlib
 
 load_dotenv()
 
@@ -66,6 +67,16 @@ def Search():
 @app.route('/volunteer.html')
 def Volunteer():
     return render_template('volunteer.html')
+
+# Route to serve volunteer page
+@app.route('/success.html')
+def paymentSuccess():
+    return render_template('success.html')
+
+# Route to serve volunteer page
+@app.route('/failed.html')
+def paymentFailed():
+    return render_template('failed.html')
 
 # Route to add new user
 @app.route('/new_user', methods=['POST'])
@@ -151,18 +162,23 @@ def sendKey():
         key=os.getenv("RAZORPAY_API_KEY")))
 
 # Route to verify payment
-@app.route("/api/paymentVerify", methods=["POST"])
+@app.route("/paymentVerify", methods=["POST"])
 def verify_payment():
-    payment_id = request.json['razorpay_payment_id']
-    order_id = request.json['razorpay_order_id']
-    signature = request.json['razorpay_signature']
+    # razorpay does not send back "application/json", it is a "form"
+    payment_id = request.form['razorpay_payment_id']
+    order_id = request.form['razorpay_order_id']
+    signature = request.form['razorpay_signature']
+    content = order_id + "|" + payment_id
+    generate = hmac.new(
+        str(os.getenv("RAZORPAY_API_SECRET")).encode("utf-8"), 
+        content.encode("utf-8"),
+        hashlib.sha256,
+    ).hexdigest()
 
-    status = razorpay_client.utility.verify_payment_signature(payment_id, order_id, signature, os.getenv("RAZORPAY_API_SECRET"))
-
-    if status:
-        return redirect("success.html")
+    if generate == signature:
+        return redirect("success.html"), 302
     else:
-        return redirect("failed.html")
+        return redirect("failed.html"), 302
 
 if __name__ == '__main__':
     app.run(debug=True)
