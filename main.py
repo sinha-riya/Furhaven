@@ -16,7 +16,7 @@ user = db.users
 vol = db.volunteers
 
 # Razorpay config
-razorpay_client = Client(os.getenv("RAZORPAY_API_KEY"), os.getenv("RAZORPAY_API_SECRET"))
+razorpay_client = Client(auth=(os.getenv("RAZORPAY_API_KEY"), os.getenv("RAZORPAY_API_SECRET")))
 razorpay_client.set_app_details({"title" : "<YOUR_APP_TITLE>", "version" : "<YOUR_APP_VERSION>"})
 
 '''
@@ -126,20 +126,19 @@ def register():
 
 # Route to initiate payment
 @app.route("/order", methods=["POST"])
-async def checkout():
+def checkout():
     try:
+        # money is always in lowest unit : 500 -> Rs.5
         amount = request.json['amount'] * 100
         currency = "INR"
-        receipt_id = "order_id" + str(uuid.uuid4());
-        order_data = razorpay_client.order.create({
-            amount: amount,
-            currency: currency,
-            receipt_id: receipt_id
+        order_data = razorpay_client.order.create(data={
+            "amount": int(amount),
+            "currency": currency,
         })
-
-        return jsonify(order_data), 200
+        return jsonify(order_data)
 
     except Exception as e:
+        print(e)
         return jsonify({
             'message': "500: InternalServerError"
         }), 500
@@ -152,7 +151,7 @@ def sendKey():
         key=os.getenv("RAZORPAY_API_KEY")))
 
 # Route to verify payment
-@app.route("/paymentVerify", methods=["POST"])
+@app.route("/api/paymentVerify", methods=["POST"])
 def verify_payment():
     payment_id = request.json['razorpay_payment_id']
     order_id = request.json['razorpay_order_id']
