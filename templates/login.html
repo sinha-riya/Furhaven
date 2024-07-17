@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Login - Sizzling Jubilant Elk</title>
-    <meta property="og:title" content="Login - Sizzling Jubilant Elk" />
+    <title>Login - Furhaven</title>
+    <meta property="og:title" content="Login - Furhaven" />
+    <meta
+      property="og:image"
+      content="https://aheioqhobo.cloudimg.io/v7/_playground-bucket-v2.teleporthq.io_/f39c54a1-7edc-47c1-ad7a-27a99f770e66/93fb95a0-3a19-4cb7-a9c2-b8d41580c98a?org_if_sml=1&amp;force_format=original"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="utf-8" />
     <meta property="twitter:card" content="summary_large_image" />
 
     <style data-tag="reset-style-sheet">
-      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;appearance: button}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
     </style>
     <style data-tag="default-style-sheet">
       html {
@@ -32,6 +36,12 @@
     <link
       rel="stylesheet"
       href="https://unpkg.com/animate.css@4.1.1/animate.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="public/logo1.gif"
+      type="icon/png"
+      sizes="32x32"
     />
     <link
       rel="stylesheet"
@@ -59,167 +69,88 @@
       <link href="../static/css/login.css" rel="stylesheet" />
 
       <div class="login-container">
-        <header class="navbar2-container">
-          <header data-thq="thq-navbar" class="navbar2-navbar-interactive">
+        <header class="login-nav-container">
+          <header data-thq="thq-navbar" class="login-nav-navbar-interactive">
             <img
-              alt="Animal Shelter Connect"
-              src="public/external/pawprint-1500h.gif"
-              class="navbar2-image1"
+              alt="FURHAVEN Logo"
+              src="../public/external/logo-1500h.gif"
+              class="login-nav-image1"
             />
-            <div data-thq="thq-navbar-nav" class="navbar2-desktop-menu">
-              <nav class="navbar2-links">
-                <a
-                  href="index.html"
-                  class="navbar2-link1 thq-body-small thq-link"
-                >
-                  <span>Home</span>
-                </a>
-                <a
-                  href="donate.html"
-                  class="navbar2-link2 thq-body-small thq-link"
-                >
-                  <span>Donate</span>
-                </a>
-                <span class="thq-body-small thq-link">
-                  <span>Volunteer</span>
-                </span>
-                <a
-                  href="search.html"
-                  class="navbar2-link4 thq-body-small thq-link"
-                >
-                  <span>Find Shelters</span>
-                </a>
-                <a
-                  href="index.html"
-                  class="navbar2-link5 thq-body-small thq-link"
-                >
-                  <span>Contact Us</span>
-                </a>
+            <div data-thq="thq-navbar-nav" class="login-nav-desktop-menu">
+              <nav class="login-nav-links">
+                <h1 class="login-nav-text"><span>FURHAVEN</span></h1>
               </nav>
             </div>
-            <div data-thq="thq-burger-menu" class="navbar2-burger-menu">
-              <svg viewBox="0 0 1024 1024" class="navbar2-icon">
+            <div data-thq="thq-burger-menu" class="login-nav-burger-menu">
+              <svg viewBox="0 0 1024 1024" class="login-nav-icon">
                 <path
                   d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"
                 ></path>
               </svg>
             </div>
-            <div data-thq="thq-mobile-menu" class="navbar2-mobile-menu">
-              <div class="navbar2-nav">
-                <div class="navbar2-top">
+            <div data-thq="thq-mobile-menu" class="login-nav-mobile-menu">
+              <div class="login-nav-nav">
+                <div class="login-nav-top">
                   <img
-                    alt="Animal Shelter Connect"
-                    src="public/external/pawprint-1500h.gif"
-                    class="navbar2-logo"
+                    alt="FURHAVEN Logo"
+                    src="../public/external/logo-1500h.gif"
+                    class="login-nav-logo"
                   />
-                  <div data-thq="thq-close-menu" class="navbar2-close-menu">
-                    <svg viewBox="0 0 1024 1024" class="navbar2-icon02">
+                  <div data-thq="thq-close-menu" class="login-nav-close-menu">
+                    <svg viewBox="0 0 1024 1024" class="login-nav-icon2">
                       <path
                         d="M810 274l-238 238 238 238-60 60-238-238-238 238-60-60 238-238-238-238 60-60 238 238 238-238z"
                       ></path>
                     </svg>
                   </div>
                 </div>
-                <nav class="navbar2-links1">
-                  <span class="thq-body-small thq-link"><span>Home</span></span>
-                  <span class="thq-body-small thq-link">
-                    <span>Donate</span>
-                  </span>
-                  <span class="thq-body-small thq-link">
-                    <span>Volunteer</span>
-                  </span>
-                  <span class="thq-body-small thq-link">
-                    <span>Find Shelters</span>
-                  </span>
-                  <span class="thq-body-small thq-link">
-                    <span>Contact Us</span>
-                  </span>
-                </nav>
-              </div>
-              <div class="navbar2-icon-group">
-                <svg
-                  viewBox="0 0 950.8571428571428 1024"
-                  class="thq-icon-x-small"
-                >
-                  <path
-                    d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                  ></path></svg
-                ><svg
-                  viewBox="0 0 877.7142857142857 1024"
-                  class="thq-icon-x-small"
-                >
-                  <path
-                    d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                  ></path></svg
-                ><svg
-                  viewBox="0 0 602.2582857142856 1024"
-                  class="thq-icon-x-small"
-                >
-                  <path
-                    d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
-                  ></path>
-                </svg>
               </div>
             </div>
           </header>
         </header>
-        <div class="sign-in4-container thq-section-padding">
-          <div id="login" class="sign-in4-container1"></div>
+        <div class="sign-in-container thq-section-padding">
+          <div id="login" class="sign-in-container1"></div>
           <div
-            class="sign-in4-max-width thq-section-padding thq-section-max-width"
+            class="sign-in-max-width thq-section-padding thq-section-max-width"
           >
-            <div class="sign-in4-form-root">
-              <div class="sign-in4-form">
-                <div class="sign-in4-container2">
-                  <h2 class="sign-in4-text thq-heading-2">
+            <div class="sign-in-form-root">
+              <div class="sign-in-form">
+                <div class="sign-in-container2">
+                  <h2 class="sign-in-text thq-heading-2">
                     <span>Welcome back! Sign in to access your account.</span>
                   </h2>
-                  <p class="sign-in4-text1 thq-body-large">
-                    Don't have an account? <a href = 'sign-up.html'>Sign up</a>
+                  <p class="sign-in-text1 thq-body-large">
+                    <span>Don't have an account?</span>
+                    <a href="sign-up.html" class="sign-in-navlink">Sign up</a>
                   </p>
                 </div>
-                <div class="sign-in4-container3">
-                  <button class="sign-in4-button thq-button-outline">
-                    <svg
-                      viewBox="0 0 860.0137142857142 1024"
-                      class="sign-in4-icon"
-                    >
-                      <path
-                        d="M438.857 449.143h414.286c4 22.286 6.857 44 6.857 73.143 0 250.286-168 428.571-421.143 428.571-242.857 0-438.857-196-438.857-438.857s196-438.857 438.857-438.857c118.286 0 217.714 43.429 294.286 114.857l-119.429 114.857c-32.571-31.429-89.714-68-174.857-68-149.714 0-272 124-272 277.143s122.286 277.143 272 277.143c173.714 0 238.857-124.571 249.143-189.143h-249.143v-150.857z"
-                      ></path>
-                    </svg>
-                    <span class="thq-body-small">Continue with Google</span>
-                  </button>
+                <div class="sign-in-divider">
+                  <div class="sign-in-divider1"></div>
                 </div>
-                <div class="sign-in4-divider">
-                  <div class="sign-in4-divider1"></div>
-                  <p class="thq-body-large">OR</p>
-                  <div class="sign-in4-divider2"></div>
-                </div>
-                <form id='userlogin' action="/login" method = "post" class="sign-in4-form1">
-                  <div class="sign-in4-email">
+                <form class="sign-in-form1" id='userlogin' action="/login" method = "post">
+                  <div class="sign-in-email">
                     <label for="thq-sign-in-4-email" class="thq-body-large">
                       Email
                     </label>
                     <input
                       type="email"
-                      name = "email"
                       id="thq-sign-in-4-email"
                       required="true"
+                      name = "email"
                       placeholder="Email address"
-                      class="sign-in4-textinput thq-body-large thq-input"
+                      class="sign-in-textinput thq-body-large thq-input"
                     />
                   </div>
-                  <div class="sign-in4-password">
-                    <div class="sign-in4-container4">
+                  <div class="sign-in-password">
+                    <div class="sign-in-container3">
                       <label
                         for="thq-sign-in-4-password"
                         class="thq-body-large"
                       >
                         Password
                       </label>
-                      <div class="sign-in4-hide-password">
-                        <svg viewBox="0 0 1024 1024" class="sign-in4-icon2">
+                      <div class="sign-in-hide-password">
+                        <svg viewBox="0 0 1024 1024" class="sign-in-icon">
                           <path
                             d="M317.143 762.857l44.571-80.571c-66.286-48-105.714-125.143-105.714-206.857 0-45.143 12-89.714 34.857-128.571-89.143 45.714-163.429 117.714-217.714 201.714 59.429 92 143.429 169.143 244 214.286zM539.429 329.143c0-14.857-12.571-27.429-27.429-27.429-95.429 0-173.714 78.286-173.714 173.714 0 14.857 12.571 27.429 27.429 27.429s27.429-12.571 27.429-27.429c0-65.714 53.714-118.857 118.857-118.857 14.857 0 27.429-12.571 27.429-27.429zM746.857 220c0 1.143 0 4-0.571 5.143-120.571 215.429-240 432-360.571 647.429l-28 50.857c-3.429 5.714-9.714 9.143-16 9.143-10.286 0-64.571-33.143-76.571-40-5.714-3.429-9.143-9.143-9.143-16 0-9.143 19.429-40 25.143-49.714-110.857-50.286-204-136-269.714-238.857-7.429-11.429-11.429-25.143-11.429-39.429 0-13.714 4-28 11.429-39.429 113.143-173.714 289.714-289.714 500.571-289.714 34.286 0 69.143 3.429 102.857 9.714l30.857-55.429c3.429-5.714 9.143-9.143 16-9.143 10.286 0 64 33.143 76 40 5.714 3.429 9.143 9.143 9.143 15.429zM768 475.429c0 106.286-65.714 201.143-164.571 238.857l160-286.857c2.857 16 4.571 32 4.571 48zM1024 548.571c0 14.857-4 26.857-11.429 39.429-17.714 29.143-40 57.143-62.286 82.857-112 128.571-266.286 206.857-438.286 206.857l42.286-75.429c166.286-14.286 307.429-115.429 396.571-253.714-42.286-65.714-96.571-123.429-161.143-168l36-64c70.857 47.429 142.286 118.857 186.857 192.571 7.429 12.571 11.429 24.571 11.429 39.429z"
                           ></path>
@@ -230,27 +161,27 @@
                     <input
                       type="password"
                       id="thq-sign-in-4-password"
-                      name = "password"
                       required="true"
+                      name = "password"
                       placeholder="Password"
-                      class="sign-in4-textinput1 thq-body-large thq-input"
+                      class="sign-in-textinput1 thq-body-large thq-input"
                     />
-                    <div class="sign-in4-container5">
-                      <span class="sign-in4-text7 thq-body-small">
+                    <div class="sign-in-container4">
+                      <span class="sign-in-text6 thq-body-small">
                         Forgot password
                       </span>
                     </div>
                   </div>
-                <div class="sign-in4-container6">
-                  <button
-                    type="submit"
-                    class="sign-in4-button1 thq-button-filled"
-                  >
-                    <span class="sign-in4-text8 thq-body-small">
-                      <span>Sign In</span>
-                    </span>
-                  </button>
-                </div>
+                  <div class="sign-in-container5">
+                    <button
+                      type="submit"
+                      class="sign-in-button thq-button-filled"
+                    >
+                      <span class="sign-in-text7 thq-body-small">
+                        <span>Sign In</span>
+                      </span>
+                    </button>
+                  </div>
                 </form>
                 <script>
                   document.getElementById('userlogin').addEventListener('submit', function(event) {
@@ -275,64 +206,52 @@
           <img
             alt="Animal Shelter Database Sign In"
             src="https://images.unsplash.com/photo-1606477787346-c450ecb5a1fd?ixid=M3w5MTMyMXwwfDF8c2VhcmNofDI4fHxwZXQlMjBhbmltYWxzJTIwaW4lMjBmaWVsZHxlbnwwfHx8fDE3MTkxMjAyNDh8MA&amp;ixlib=rb-4.0.3&amp;w=1500"
-            class="sign-in4-sign-up-image thq-img-ratio-16-9"
+            class="sign-in-sign-up-image thq-img-ratio-16-9"
           />
         </div>
-        <footer class="login-footer4 thq-section-padding">
-          <div class="login-max-width thq-section-max-width">
-            <div class="login-content">
-              <div class="login-links">
-                <a href="index.html" class="login-link1 thq-body-small">Home</a>
-                <span class="thq-body-small">Volunteer Opportunities</span>
-                <span class="thq-body-small">Find Nearest Shelter</span>
-                <span class="thq-body-small">Contact Us</span>
-                <span class="thq-body-small">Donate</span>
+        <footer
+          class="footer-footer4 thq-section-padding footer-root-class-name2"
+        >
+          <div class="footer-max-width thq-section-max-width">
+            <div class="footer-content">
+              <div class="footer-links">
+                <a href="index.html" class="footer-link1 thq-body-small">
+                  <span>Home</span>
+                </a>
+                <a href="search.html" class="footer-link2 thq-body-small">
+                  <span>Search Centers</span>
+                </a>
+                <a href="donate.html" class="footer-link3 thq-body-small">
+                  <span>Donate</span>
+                </a>
+                <a href="volunteer.html" class="footer-link4 thq-body-small">
+                  <span>Volunteer</span>
+                </a>
+                <a href="contact-us.html" class="footer-link5 thq-body-small">
+                  <span>Contact Us</span>
+                </a>
               </div>
-              <div class="login-social-links">
-                <svg
-                  viewBox="0 0 877.7142857142857 1024"
-                  class="thq-icon-small"
+              <div class="footer-social-links">
+                <a
+                  href="https://www.instagram.com/furhaven_official?utm_source=qr&amp;igsh=MWR3bHZoZ2g5d3k5cg=="
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="footer-link"
                 >
-                  <path
-                    d="M713.143 73.143c90.857 0 164.571 73.714 164.571 164.571v548.571c0 90.857-73.714 164.571-164.571 164.571h-107.429v-340h113.714l17.143-132.571h-130.857v-84.571c0-38.286 10.286-64 65.714-64l69.714-0.571v-118.286c-12-1.714-53.714-5.143-101.714-5.143-101.143 0-170.857 61.714-170.857 174.857v97.714h-114.286v132.571h114.286v340h-304c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571z"
-                  ></path></svg
-                ><svg
-                  viewBox="0 0 877.7142857142857 1024"
-                  class="thq-icon-small"
-                >
-                  <path
-                    d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                  ></path></svg
-                ><svg
-                  viewBox="0 0 950.8571428571428 1024"
-                  class="thq-icon-small"
-                >
-                  <path
-                    d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                  ></path></svg
-                ><svg
-                  viewBox="0 0 877.7142857142857 1024"
-                  class="thq-icon-small"
-                >
-                  <path
-                    d="M135.429 808h132v-396.571h-132v396.571zM276 289.143c-0.571-38.857-28.571-68.571-73.714-68.571s-74.857 29.714-74.857 68.571c0 37.714 28.571 68.571 73.143 68.571h0.571c46.286 0 74.857-30.857 74.857-68.571zM610.286 808h132v-227.429c0-121.714-65.143-178.286-152-178.286-70.857 0-102.286 39.429-119.429 66.857h1.143v-57.714h-132s1.714 37.143 0 396.571v0h132v-221.714c0-11.429 0.571-23.429 4-32 9.714-23.429 31.429-48 68-48 47.429 0 66.286 36 66.286 89.714v212zM877.714 237.714v548.571c0 90.857-73.714 164.571-164.571 164.571h-548.571c-90.857 0-164.571-73.714-164.571-164.571v-548.571c0-90.857 73.714-164.571 164.571-164.571h548.571c90.857 0 164.571 73.714 164.571 164.571z"
-                  ></path></svg
-                ><svg viewBox="0 0 1024 1024" class="thq-icon-small">
-                  <path
-                    d="M406.286 644.571l276.571-142.857-276.571-144.571v287.429zM512 152c215.429 0 358.286 10.286 358.286 10.286 20 2.286 64 2.286 102.857 43.429 0 0 31.429 30.857 40.571 101.714 10.857 82.857 10.286 165.714 10.286 165.714v77.714s0.571 82.857-10.286 165.714c-9.143 70.286-40.571 101.714-40.571 101.714-38.857 40.571-82.857 40.571-102.857 42.857 0 0-142.857 10.857-358.286 10.857v0c-266.286-2.286-348-10.286-348-10.286-22.857-4-74.286-2.857-113.143-43.429 0 0-31.429-31.429-40.571-101.714-10.857-82.857-10.286-165.714-10.286-165.714v-77.714s-0.571-82.857 10.286-165.714c9.143-70.857 40.571-101.714 40.571-101.714 38.857-41.143 82.857-41.143 102.857-43.429 0 0 142.857-10.286 358.286-10.286v0z"
-                  ></path>
-                </svg>
+                  <svg
+                    viewBox="0 0 877.7142857142857 1024"
+                    class="footer-icon thq-icon-small"
+                  >
+                    <path
+                      d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+                    ></path>
+                  </svg>
+                </a>
               </div>
             </div>
-            <div class="login-credits">
+            <div class="footer-credits">
               <div class="thq-divider-horizontal"></div>
-              <div class="login-row">
-                <div class="login-footer-links">
-                  <span class="thq-body-small">Privacy Policy</span>
-                  <span class="thq-body-small">Terms of Use</span>
-                  <span class="thq-body-small">Cookies Policy</span>
-                </div>
-              </div>
+              <div class="footer-row"></div>
             </div>
           </div>
         </footer>
