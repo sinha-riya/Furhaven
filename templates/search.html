@@ -203,27 +203,27 @@
               });
               new mapboxgl.Marker({ color: 'red' })
                                   .setLngLat([77.711812, 13.058937])
-                                  .setPopup(new mapboxgl.Popup().setText("Syerra Animal Rescue Center")) // Add popup with shelter name
+                                  .setPopup(new mapboxgl.Popup().setHTML('<a href="https://maps.app.goo.gl/7Rcw8jFTE3Q3CiAN8" target="_blank">Syerra Animal Rescue Center</a>')) // Add popup with shelter name
                                   .addTo(map);
               new mapboxgl.Marker({ color: 'red' })
                                   .setLngLat([77.634062, 12.904438])
-                                  .setPopup(new mapboxgl.Popup().setText("Mylos Rescue")) // Add popup with shelter name
+                                  .setPopup(new mapboxgl.Popup().setHTML('<a href="https://maps.app.goo.gl/2QbdukjidXB6Nxz28" target="_blank">Mylos Rescue</a>')) // Add popup with shelter name
                                   .addTo(map);                    
               new mapboxgl.Marker({ color: 'red' })
                                   .setLngLat([77.583687, 13.027678])
-                                  .setPopup(new mapboxgl.Popup().setText("Karuna Adoption Center")) // Add popup with shelter name
+                                  .setPopup(new mapboxgl.Popup().setHTML('<a href="https://maps.app.goo.gl/pT7gmFtvXTbEtNJL8" target="_blank">Karuna Adoption Center</a>')) // Add popup with shelter name
                                   .addTo(map);                    
               new mapboxgl.Marker({ color: 'red' })
                                   .setLngLat([77.628563, 12.868813])
-                                  .setPopup(new mapboxgl.Popup().setText("Sri Krishna Goushala")) // Add popup with shelter name
+                                  .setPopup(new mapboxgl.Popup().setHTML('<a href="https://maps.app.goo.gl/UBTS1JGzAMgZF2cR7" target="_blank">Haven Animal Welfare Welfare Trust</a>')) // Add popup with shelter name
                                   .addTo(map);                    
               new mapboxgl.Marker({ color: 'red' })
                                   .setLngLat([77.799312, 13.011563])
-                                  .setPopup(new mapboxgl.Popup().setText("Haven Animal Welfare Welfare Trust")) // Add popup with shelter name
+                                  .setPopup(new mapboxgl.Popup().setHTML('<a href="https://maps.app.goo.gl/369V2BMWiXSTtJ3v7" target="_blank">Sri Krishna Goushala</a>')) // Add popup with shelter name
                                   .addTo(map);                    
               new mapboxgl.Marker({ color: 'red' })
                                   .setLngLat([77.406437, 12.762187])
-                                  .setPopup(new mapboxgl.Popup().setText("Sudha Shelter Home")) // Add popup with shelter name
+                                  .setPopup(new mapboxgl.Popup().setHTML('<a href="https://maps.app.goo.gl/k5KfMPGMZbgpggxg8" target="_blank">Sudha Shelter Home</a>')) // Add popup with shelter name
                                   .addTo(map);                    
               fetch('/pet-shelters', {method : 'GET'})
                       .then(response => response.json())
