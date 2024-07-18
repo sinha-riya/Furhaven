@@ -203,7 +203,7 @@
                 </div>
               </div>
             </div>
-            <form class="volunteer-registration-form thq-flex-column">
+            <form id="volunteer" action="/register" method='POST'class="volunteer-registration-form thq-flex-column">
               <div class="volunteer-registration-container">
                 <div class="volunteer-registration-input">
                   <label for="contact-form-7-first-name" class="thq-body-small">
@@ -212,6 +212,7 @@
                   <input
                     type="text"
                     name = "first_name"
+                    required="true"
                     id="contact-form-7-first-name"
                     placeholder="First Name"
                     class="thq-input"
@@ -251,6 +252,7 @@
                   <input
                     type="tel"
                     name = "ph_no"
+                    required="true"
                     id="contact-form-7-phone"
                     placeholder="Phone Number"
                     class="thq-input"
@@ -265,7 +267,7 @@
                   <div class="volunteer-registration-container3">
                     <select
                       id="contact-form-7-options"
-                      name = "shelter_pref"
+                      name = "work_pref"
                       placeholder="Shelter"
                       class="thq-select"
                     >

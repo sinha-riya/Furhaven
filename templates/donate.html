@@ -83,7 +83,7 @@
                 key,
                 amount: Number(combinedData.amount),
                 currency: "INR",
-                name: "Pethaven",
+                name: "Furhaven",
                 description: "Donation Box",
                 order_id: combinedData.id,
                 callback_url: "http://localhost:5000/paymentVerify",
@@ -251,7 +251,7 @@
                   </span>
                 </div>
               </div>
-              <form class="thq-card">
+              <form id="donate" method="POST" action="/donation" class="thq-card">
                 <div class="donate-form-input">
                   <label for="contact-form-3-name" class="thq-body-small">
                     Name
@@ -259,7 +259,7 @@
                   <input
                     type="text"
                     id="contact-form-3-name"
-                    name="e.g. name"
+                    name="name"
                     required="true"
                     placeholder="Name"
                     class="thq-input"
@@ -272,6 +272,7 @@
                   <input
                     type="email"
                     id="contact-form-3-email"
+                    name="email"
                     required="true"
                     placeholder="Email"
                     class="thq-input"
@@ -289,7 +290,7 @@
                   <input
                     type="number"
                     id="contact-form-3-name"
-                    name="Contact No"
+                    name="phone"
                     required="true"
                     placeholder="Contact No"
                     class="thq-input"
@@ -303,6 +304,7 @@
                   <textarea
                     id="contact-form-3-message"
                     rows="3"
+                    name="remark"
                     placeholder="Enter your message"
                     class="thq-input"
                   ></textarea>
@@ -311,7 +313,7 @@
                   <input
                     type="checkbox"
                     id="contact-form-3-check"
-                    checked="true"
+                    checked="false"
                     required="true"
                     class="thq-checkbox"
                   />
@@ -323,59 +325,57 @@
                   </label>
                 </div>
                 <button
-                  
+                  type="submit"
                   onclick = "donate()"
                   class="donate-form-button thq-button-filled"
                 >
                   <span class="thq-body-small"><span>Submit</span></span>
                 </button>
+                <script>
+                  document.getElementById('donate').addEventListener('submit', function(event) {
+                      event.preventDefault();
+                      var formData = new FormData(this);
+                      fetch('/donation', {
+                          method: 'POST',
+                          body: formData
+                      })
+                      .then(response => response.json())
+                      .then(data => {
+                        this.reset();
+                        if (data.message) {
+                          alert(data.message);
+                          }
+                      });
+                  });
+                </script>
               </form>
             </div>
           </div>
         </div>
         <div class="overall-stat-container thq-section-padding">
           <div class="overall-stat-max-width thq-section-max-width">
-            <div class="overall-stat-container1 thq-flex-column"></div>
+            
             <div class="overall-stat-container2 thq-flex-column">
-              <span class="thq-body-small"><span>Over 5000</span></span>
+              
               <h2 class="thq-heading-2"><span>Our Impact</span></h2>
-              <p class="thq-body-large"><span>Over 10,000</span></p>
+              <p class="thq-body-large"><span></span></p>
               <div class="overall-stat-container3 thq-grid-2">
                 <div class="overall-stat-container4">
                   <h2 class="thq-heading-2">
-                    <span>Number of animals rescued</span>
+                    <span>{{ TotalDon }}</span>
                   </h2>
                   <span class="thq-body-small">
-                    <span>
-                      Total animals rescued and rehomed by our shelters
+                    <span>Total donations received to support our shelters</span>
                     </span>
                   </span>
                 </div>
                 <div class="overall-stat-container5">
                   <h2 class="thq-heading-2">
-                    <span>Volunteer hours contributed</span>
+                    <span>{{ NoOfVol }}</span>
                   </h2>
                   <span class="thq-body-small">
                     <span>
-                      Total volunteer hours dedicated to caring for animals
-                    </span>
-                  </span>
-                </div>
-              </div>
-              <div class="overall-stat-container6 thq-grid-2">
-                <div class="overall-stat-container7">
-                  <h2 class="thq-heading-2"><span>Donations received</span></h2>
-                  <span class="thq-body-small">
-                    <span>
-                      Total donations received to support our shelters
-                    </span>
-                  </span>
-                </div>
-                <div class="overall-stat-container8">
-                  <h2 class="thq-heading-2"><span>Happy adoptions</span></h2>
-                  <span class="thq-body-small">
-                    <span>
-                      Number of successful adoptions to loving families
+                      Total number of volunteer contributed to caring for animals
                     </span>
                   </span>
                 </div>

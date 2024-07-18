@@ -180,27 +180,18 @@
                 <h2 class="thq-heading-2">Contact us</h2>
               </div>
             </div>
-            <form class="contact-us-form thq-flex-column">
+            <form id="feedback" action="/feedback" method="POST" class="contact-us-form thq-flex-column">
               <div class="contact-us-container1">
                 <div class="contact-us-input">
                   <label for="contact-form-5-first-name" class="thq-body-small">
-                    First name
+                    Name
                   </label>
                   <input
                     type="text"
+                    name = "name"
+                    required="true"
                     id="contact-form-5-first-name"
-                    placeholder="First Name"
-                    class="thq-input"
-                  />
-                </div>
-                <div class="contact-us-input1">
-                  <label for="contact-form-5-last-name" class="thq-body-small">
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    id="contact-form-5-last-name"
-                    placeholder="Last Name"
+                    placeholder="Name"
                     class="thq-input"
                   />
                 </div>
@@ -212,6 +203,7 @@
                   </label>
                   <input
                     type="email"
+                    name ="email"
                     id="contact-form-5-email"
                     required="true"
                     placeholder="Email"
@@ -224,6 +216,7 @@
                   </label>
                   <input
                     type="tel"
+                    name="ph_no"
                     id="contact-form-5-phone"
                     placeholder="Phone Number"
                     class="thq-input"
@@ -237,6 +230,7 @@
                 <textarea
                   id="contact-form-5-message"
                   rows="3"
+                  name ="msg"
                   placeholder="Enter your message"
                   class="thq-input contact-us-textarea"
                 ></textarea>
@@ -245,7 +239,7 @@
                 <input
                   type="checkbox"
                   id="contact-form-5-check"
-                  checked="true"
+                  checked="false"
                   required="true"
                   class="thq-checkbox"
                 />
@@ -257,6 +251,23 @@
                 <span class="thq-body-small">Submit</span>
               </button>
             </form>
+            <script>
+              document.getElementById('feedback').addEventListener('submit', function(event) {
+                  event.preventDefault();
+                  var formData = new FormData(this);
+                  fetch('/feedback', {
+                      method: 'POST',
+                      body: formData
+                  })
+                  .then(response => response.json())
+                  .then(data => {
+                    this.reset();
+                    if (data.message) {
+                      alert(data.message);
+                      }
+              })
+          });
+          </script>
           </div>
         </div>
         <footer class="footer-footer4 thq-section-padding">

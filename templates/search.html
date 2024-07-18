@@ -199,8 +199,43 @@
                   container: 'map', // Container ID
                   style: 'mapbox://styles/mapbox/streets-v11', // Map style to use
                   center: [77.594566, 12.971599], // Initial map center in [lng, lat]
-                  zoom: 3 // Initial zoom level
+                  zoom: 9 // Initial zoom level
               });
+              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([77.711812, 13.058937])
+                                  .setPopup(new mapboxgl.Popup().setText("Syerra Animal Rescue Center")) // Add popup with shelter name
+                                  .addTo(map);
+              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([77.634062, 12.904438])
+                                  .setPopup(new mapboxgl.Popup().setText("Mylos Rescue")) // Add popup with shelter name
+                                  .addTo(map);                    
+              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([77.583687, 13.027678])
+                                  .setPopup(new mapboxgl.Popup().setText("Karuna Adoption Center")) // Add popup with shelter name
+                                  .addTo(map);                    
+              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([77.628563, 12.868813])
+                                  .setPopup(new mapboxgl.Popup().setText("Sri Krishna Goushala")) // Add popup with shelter name
+                                  .addTo(map);                    
+              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([77.799312, 13.011563])
+                                  .setPopup(new mapboxgl.Popup().setText("Haven Animal Welfare Welfare Trust")) // Add popup with shelter name
+                                  .addTo(map);                    
+              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([77.406437, 12.762187])
+                                  .setPopup(new mapboxgl.Popup().setText("Sudha Shelter Home")) // Add popup with shelter name
+                                  .addTo(map);                    
+              fetch('/pet-shelters', {method : 'GET'})
+                      .then(response => response.json())
+                      .then(data => {
+                          data.shelters.forEach(shelter => {
+                              // Add a marker for each pet shelter
+                              new mapboxgl.Marker({ color: 'red' })
+                                  .setLngLat([shelter.longitude, shelter.latitude])
+                                  .setPopup(new mapboxgl.Popup().setText(shelter.name)) // Add popup with shelter name
+                                  .addTo(map);
+                          });
+                      })
               // Get user's location
               if (navigator.geolocation) {
                   navigator.geolocation.getCurrentPosition(position => {
@@ -210,17 +245,14 @@
                       // Add a marker for the user's location
                       new mapboxgl.Marker()
                           .setLngLat(userLocation)
-                          .addTo(map)
-                          .setText("You");
-                      // Fetch and display pet shelters near the user's location
-                      fetchPetShelters(userLocation);
+                          .addTo(map).setPopup(new mapboxgl.Popup().setText("You"));
                   });
               } else {
                   alert("Geolocation is not supported by this browser.");
               }
               function fetchPetShelters(userLocation) {
                   const [lng, lat] = userLocation;
-                  fetch(`/pet-shelters?longitude=${lng}&latitude=${lat}`)
+                  fetch('/pet-shelters',{method : 'POST'})
                       .then(response => response.json())
                       .then(data => {
                           data.shelters.forEach(shelter => {

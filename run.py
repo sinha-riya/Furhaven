@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify, redirect, url_for, session
+from flask import Flask, request, render_template, jsonify, redirect, session, url_for
 from pymongo import MongoClient, errors
 from razorpay import Client
 from dotenv import load_dotenv
@@ -6,10 +6,12 @@ import os
 import hmac
 import hashlib
 from datetime import datetime
-
-app = Flask(__name__, static_folder='static')
+from bson.json_util import dumps
 
 load_dotenv()
+
+app = Flask(__name__, static_folder='static')
+app.secret_key = os.getenv('secret_key')
 
 # Razorpay config
 razorpay_client = Client(auth=(os.getenv("RAZORPAY_API_KEY"), os.getenv("RAZORPAY_API_SECRET")))
@@ -21,16 +23,23 @@ client = MongoClient(client_rqst)
 db = client.project
 user = db.users
 vol = db.volunteers
-shelter = db.shelters
+shltr = db.shelters
+rvw = db.feedback
+don = db.donation
+pay = db.payments
 
 user.create_index([('email',1)], unique= True)
 user.create_index([('username',1),('password',1)])
 
-vol.create_index([('email', 1),('phone',1),('preferred_shelter',1)], unique=True)
+vol.create_index([('email', 1),('phone',1),('preferred_work',1)], unique=True)
 vol.create_index([('first_name',1),('last_name',1),('remarks',1)])
 
-shelter.create_index([('id',1), ('name',1), ('location',1)], unique = True)
+shltr.create_index([('id',1), ('name',1), ('location',1)], unique = True)
 
+rvw.create_index([('name',1),('email', 1),('review',1)], unique=True)
+rvw.create_index([('phone',1)])
+
+pay.create_index([("payId",1)],unique = True)
 
 # Route to serve the landing page
 @app.route('/')
@@ -60,7 +69,9 @@ def Error404():
 # Route to serve donate page
 @app.route('/donate.html')
 def Donation():
-    return render_template('donate.html')
+    VolNo = vol.count_documents({})
+    DonS = pay.count_documents({})
+    return render_template('donate.html',NoOfVol = VolNo, TotalDon = DonS*500)
 
 # Route to serve search page
 @app.route('/search.html')
@@ -73,11 +84,16 @@ def Volunteer():
     return render_template('volunteer.html')
 
 # Route to serve dashboard
-@app.route('/dashboard.html')
+@app.route('/dashboard.html', methods = ['GET'])
 def Dashboard():
-    email = session.get('email',None)
-    found = jsonify(user.find_one({'email': email}))
-    return render_template('dashboard.html')
+    email = request.args.get('email')
+    found = user.find_one({'email': email})
+    if found:
+        uname = found['username']
+        reg = len(list(vol.find({'email': email})))
+    else:
+        uname, email, reg = "Demo", "demo@gmail.com", 0
+    return render_template('dashboard.html', username=uname, email=email, reg_no=reg)
 
 # Route to serve contact us page
 @app.route('/contact-us.html')
@@ -105,6 +121,7 @@ def addNewUser():
 
     # Save to MongoDB
         user.insert_one({'username': username, 'email': email, 'password': password})
+        
         return jsonify({'message': 'You are registered successfully, continue to LogIn'})
     
     except errors.PyMongoError:
@@ -113,7 +130,7 @@ def addNewUser():
         return jsonify({'message': 'An unexpected error occurred: ' + str(e)}), 500
 
 #Route to login
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
@@ -127,8 +144,7 @@ def login():
         found = user.find_one({'email': email})
         if found:
             if found['password']== password:
-                session['email'] = email
-                return redirect(url_for('Dashboard'))
+                return redirect(url_for('Dashboard', email=email)) #, jsonify({'message': "Welcome back"})
             return jsonify({'message': "Incorrect password"})
         return jsonify({'message': "User not found! Kindly SignIn to continue."})
     
@@ -140,11 +156,11 @@ def register():
         email = request.form['email']
         lastName = request.form['last_name']
         phNo = request.form['ph_no']
-        pref = request.form['shelter_pref']
+        pref = request.form['work_pref']
         remarks = request.form['msg'].strip()
 
     # Save to MongoDB
-        vol.insert_one({'first_name': firstName, 'email': email, 'last_name': lastName, 'phone': phNo, 'preferred_shelter' : pref, 'remarks':remarks})
+        vol.insert_one({'first_name': firstName, 'email': email, 'last_name': lastName, 'phone': phNo, 'preferred_work' : pref, 'remarks':remarks})
         return jsonify({'message': 'You are registered successfully'})
     
     except errors.PyMongoError:
@@ -193,9 +209,55 @@ def verify_payment():
     ).hexdigest()
 
     if generate == signature:
+        pay.insert_one({"payId": payment_id})
         return redirect("success.html"), 302
     else:
         return redirect("failed.html"), 302
 
+#route to locate pet shelters 
+@app.route('/pet-shelters', methods=['POST'])
+def get_pet_shelters():
+    try:
+        pet_shelters = shltr.find()
+        return jsonify({'shelters': pet_shelters})
+
+    except Exception as e:
+        return jsonify({'error': str(e)})
+    
+#route to collect feedback
+@app.route('/feedback',methods=['POST'])
+def collect_feedback():
+    try:
+        Name = request.form['name']
+        email = request.form['email']
+        phNo = request.form['ph_no']
+        review = request.form['msg'].strip()
+
+    # Save to MongoDB
+        rvw.insert_one({'name': Name, 'email': email, 'phone': phNo, 'review':review})
+        return jsonify({'message': 'Your Feedback has been recorded.'})
+    
+    except errors.PyMongoError:
+        return jsonify({'message': 'Your Feedback was recorded.'})
+    except Exception as e:
+        return jsonify({'message': 'An unexpected error occurred: ' + str(e)}), 500
+
+#route to accept donations
+@app.route("/donation", methods=['POST'])
+def donations():
+    try:
+        name = request.form['name']
+        email = request.form['email']
+        phNo = request.form['phone']
+        remark = request.form['remark']
+
+        don.insert_one({'name': name, 'email':email, 'phone':phNo, 'remark':remark})
+        return jsonify({'message': 'Payment initialised'})
+    except errors.PyMongoError:
+        return jsonify({'message': 'An unexpected error occurred.'})
+    except Exception as e:
+        return jsonify({'message': 'An unexpected error occurred: ' + str(e)}), 500
+    
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
