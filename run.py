@@ -5,17 +5,18 @@ from dotenv import load_dotenv
 import os
 import hmac
 import hashlib
+from datetime import datetime
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 load_dotenv()
 
-client_rqst = os.getenv("client_rqst")
 # Razorpay config
 razorpay_client = Client(auth=(os.getenv("RAZORPAY_API_KEY"), os.getenv("RAZORPAY_API_SECRET")))
 razorpay_client.set_app_details({"title" : "<YOUR_APP_TITLE>", "version" : "<YOUR_APP_VERSION>"})
 
 # Connect to MongoDB
+client_rqst = os.getenv("client_rqst")
 client = MongoClient(client_rqst)
 db = client.project
 user = db.users
@@ -86,7 +87,8 @@ def ContactUs():
 # Route to successful payment page
 @app.route('/success.html')
 def paymentSuccess():
-    return render_template('success.html')
+    current_date = datetime.now().strftime("%d-%m-%Y")
+    return render_template('success.html', current_date = current_date)
 
 # Route to failed payment page
 @app.route('/failed.html')
