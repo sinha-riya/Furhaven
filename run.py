@@ -144,7 +144,8 @@ def login():
         found = user.find_one({'email': email})
         if found:
             if found['password']== password:
-                return redirect(url_for('Dashboard', email=email)) #, jsonify({'message': "Welcome back"})
+                return jsonify({'message': "Welcome back"})
+                #return redirect(url_for('Dashboard', email=email)) 
             return jsonify({'message': "Incorrect password"})
         return jsonify({'message': "User not found! Kindly SignIn to continue."})
     
