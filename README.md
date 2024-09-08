@@ -4,13 +4,13 @@ A user-friendly web-application that connects users with local animal shelters u
 
 ### Installation
 ```bash
-python -m venv yenv
+python -m venv venv
 ```
 ```bash
 .\venv\Scripts\activate
 ```
 ```bash
-pip install -r requirements
+pip install -r requirements.txt
 ```
 ```bash
 python run.py
